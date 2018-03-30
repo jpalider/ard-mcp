@@ -88,7 +88,7 @@ void write_reg(uint8_t reg, uint8_t val)
 	case _IODIR:
 		DEBUG("==== IODIR");
 		for (i = 0; i < 8; i++) {
-			pinMode(data_pins[i], (val & (1<<i)) ? INPUT : OUTPUT );
+			pinMode(data_pins[i], (val & (1<<i)) ? INPUT : OUTPUT);
 			DEBUG(i);
 			DEBUG((val & (1<<i)) ? "INPUT" : "OUTPUT");
 		}
@@ -98,7 +98,7 @@ void write_reg(uint8_t reg, uint8_t val)
 		DEBUG("==== GPPU");
 		for (i = 0; i < 8; i++) {
 			/* if IODIR is as input then if requested set pull-up*/
-			pinMode(data_pins[i], (val & (1<<i)) ? INPUT : INPUT_PULLUP );
+			pinMode(data_pins[i], (val & (1<<i)) ? INPUT_PULLUP : INPUT);
 			DEBUG(i);
 			DEBUG((val & (1<<i)) ? "INPUT" : "INPUT_PULLUP");
 		}
