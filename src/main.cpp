@@ -46,7 +46,7 @@ uint8_t data_pins[8] = { 2, 3, 4, 5, 6, 7, 8, 9 };
   with addr 0  1  0 ' 0  A2, A1, A0
                           ^   ^  ^
 */
-uint8_t addr_pins[8] = { 10, 11, 12 };
+uint8_t addr_pins[3] = { 10, 11, 12 };
 uint8_t mcp23008_addr = MCP23008_BASE_ADDR;
 
 void init_regs(void);
@@ -191,6 +191,7 @@ void setup()
 	mcp23008_regs[_GPIO] = 0xFF;
 	write_reg(_GPIO, mcp23008_regs[_GPIO]);
 
+	/* Reply to pin-driver configuration address */
 	Wire.begin(i2c_addr);
 	Wire.onRequest(requestEvent);
 	Wire.onReceive(receiveEvent);
